@@ -11,7 +11,8 @@
       <a href="/" class="logo">EduVerse</a>
       <ul class="menu">
         {% if request.user.is_authenticated %}
-          <li><a href="{% url 'logout' %}">Выйти</a></li>
+          <a href="{% url 'course:manage_course_list'%}">Личный кабинет</a>
+          <a href="{% url 'logout' %}">Выйти</a>
         {% else %}
           <li><a href="{% url 'login' %}">Войти</a></li>
         {% endif %}

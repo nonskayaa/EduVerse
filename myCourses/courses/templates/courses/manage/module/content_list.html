@@ -13,7 +13,7 @@
     <ul id="modules">
       {% for m in course.modules.all %}
         <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
-          <a href='{% url "module_content_list" m.id %}'>
+          <a href='{% url "course:module_content_list" m.id %}'>
             <span>
               Модуль <span class="order">{{ m.order|add:1 }}</span>
             </span>
@@ -25,7 +25,7 @@
         <li>Тут пока нет еще модулей :(</li>
       {% endfor %}
     </ul>
-    <p><a href='{% url "course_module_update" course.id %}'>
+    <p><a href='{% url "course:course_module_update" course.id %}'>
     Редактировать модули</a></p>
   </div>
   <div class="module">
@@ -52,18 +52,19 @@
     <h3>Добавить новый контент:</h3>
     <ul class="content-types">
       <li>
-        <a href='{% url "module_content_create" module.id "text" %}'>Текст</a>
+        <a href='{% url "course:module_content_create" module.id "text" %}'>Текст</a>
       </li>
       <li>
-        <a href='{% url "module_content_create" module.id "image" %}'>Картинка</a>
+        <a href='{% url "course:module_content_create" module.id "image" %}'>Картинка</a>
       </li>
       <li>
-        <a href='{% url "module_content_create" module.id "video" %}'>Видео</a>
+        <a href='{% url "course:module_content_create" module.id "video" %}'>Видео</a>
       </li>
       <li>
-        <a href='{% url "module_content_create" module.id "file" %}'>Файл</a>
+        <a href='{% url "course:module_content_create" module.id "file" %}'>Файл</a>
       </li>
     </ul>
   </div>
 {% endwith %}
 {% endblock %}
+
