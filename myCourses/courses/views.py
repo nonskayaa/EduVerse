@@ -14,10 +14,27 @@ from .models import Module, Content
 from django.db.models import Count
 from .models import Subject
 from django.views.generic.detail import DetailView
+from students.forms import CourseEnrollForm
+from django.views.generic.list import ListView
+from courses.models import Course
+
+
+class StudentCourseListView(LoginRequiredMixin, ListView):
+    model = Course
+    template_name = 'students/course/list.html'
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(students__in=[self.request.user])
 
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/course/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['enroll_form'] = CourseEnrollForm(
+            initial={'course': self.object})
+        return context
 
 
 class CourseListView(TemplateResponseMixin, View):

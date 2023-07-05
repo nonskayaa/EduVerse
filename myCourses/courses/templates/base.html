@@ -6,22 +6,116 @@
     <title>{% block title %}EduVerse{% endblock %}</title>
     <link href="{% static '../static/base.css' %}" rel="stylesheet">
   </head>
-  <body>
-    <div id="header">
-      <a href="/" class="logo">EduVerse</a>
-      <ul class="menu">
-        {% if request.user.is_authenticated %}
-          <a href="{% url 'course:manage_course_list'%}">Личный кабинет</a>
-          <a href="{% url 'logout' %}">Выйти</a>
-        {% else %}
-          <li><a href="{% url 'login' %}">Войти</a></li>
-        {% endif %}
-      </ul>
-    </div>
+    <body>
+   <div class="wrapper">
+      <div id="header">
+        <div id="header_content">
+         <a href="/" class="logo">EduVerse</a>
+          <div class="menu">
+            {% if request.user.is_authenticated %}
+            <button class="pop_up"><a class="autoriz" href="accounts/login/"><img style="vertical-align: middle;" src="../../static/img/ЛКиконка.svg"><nobr class="autoriz_link">Личный кабинет</nobr></a></button>
+            {% else %}
+            <button class="pop_up"><a class="autoriz" href="#Autorization"><img style="vertical-align: middle;" src="../../static/img/ЛКиконка.svg"><nobr class="autoriz_link">Вход/Регистрация</nobr></a></button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
     <div id="content">
       {% block content %}
       {% endblock %}
     </div>
+      <div id="footer">
+          <div class="footer_container">
+              <div class="left">
+                  <a href="/" class="logo">EduVerse</a>
+              </div>
+              <div class="center">
+                  <button class="pop_up"><a href="#Contacts" class="popup_link">Контакты</a></button>
+                  <button class="pop_up" style="margin-left:50px; margin-right: 47px;"><a href="#Help" class="popup_link">Помощь</a></button>
+                  <button class="pop_up"><a href="#Partners" class="popup_link">Партнёрам</a></button>
+              </div>
+              <div class="right">
+                  <p align="right">EduVerse@gmail.com</p>
+                  <p align="right">+7 999 999 99 99</p>
+              </div>
+          </div>
+      </div>
+
+
+       <div class="main_popup_div" id="Autorization">
+           <a href="#" class="popup_area"></a>
+          <div class="popup_body">
+              <div class="popup_content">
+                  <div class="module">
+                    {% if form.errors %}
+                      <p>Почта или пароль были введены неверно</p>
+                    {% else %}
+                    {% endif %}
+                    <div class="login-form">
+                      <form action="{% url 'login' %}" method="post">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}" />
+                        <p><input type="submit"  value="Авторизоваться"></p>
+                      </form>
+              </div>
+          </div>
+
+       </div>
+
+
+       <div class="main_popup_div" id="Registration">
+
+       </div>
+
+
+      <div class="main_popup_div" id="Contacts">
+          <a href="#" class="popup_area"></a>
+          <div class="popup_body">
+              <div class="popup_content">
+                  <div class="popup_title" align="center">
+                      Контакты
+                  </div>
+                  <div class="popup_subtitle" align="center">
+                      Создатели
+                  </div>
+                  <div class="popup_text" align="center">
+                    https://t.me/nonskayaa<br>
+                    https://t.me/gold_vanish_gold<br>
+                    https://t.me/vm_gss
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="main_popup_div" id="Help">
+          <a href="#" class="popup_area"></a>
+          <div class="popup_body">
+              <div class="popup_content">
+                  <div class="popup_title" align="center">
+                      Помощь
+                  </div>
+                  <div class="popup_text" align="center">
+                    EduVerseHelp@gmail.com
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="main_popup_div" id="Partners">
+          <a href="#" class="popup_area"></a>
+          <div class="popup_body">
+              <div class="popup_content">
+                  <div class="popup_title" align="center">
+                      Партнёрам
+                  </div>
+                  <div class="popup_text" align="center">
+                    EduVerseTeam@gmail.com
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+   </div>
+   </div>
     <script>
       document.addEventListener('DOMContentLoaded', (event) => {
         // DOM loaded
