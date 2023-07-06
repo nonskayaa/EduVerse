@@ -17,19 +17,22 @@
     {% endif %}
   </h1>
   <div class="contents">
-    <h3>Subjects</h3>
+    <h3>Предметы</h3>
     <ul id="modules">
       <li {% if not subject %}class="selected"{% endif %}>
-        <a href='{% url "course_list" %}'>All</a>
+        <h3>
+        <a href='{% url "course_list" %}'>Все предметы</a>
+        </h3>
       </li>
       {% for s in subjects %}
         <li {% if subject == s %}class="selected"{% endif %}>
+          <h3>
           <a href='{% url "course:course_list_subject" s.slug %}'>
             {{ s.title }}
-            <br>
-            <span>{{ s.total_courses }} course{{ s.total_courses|pluralize }}</span>
+            </h3>
           </a>
         </li>
+      <span> Количество курсов : {{ s.total_courses }} </span>
       {% endfor %}
     </ul>
   </div>
@@ -42,10 +45,11 @@
           </a>
         </h3>
         <p>
+          ПРЕДМЕТ:
           <a href='{% url "course:course_list_subject" subject.slug %}'>{{ subject }}</a>.
-            {{ course.total_modules }} modules.
-            Instructor: {{ course.owner.get_full_name }}
         </p>
+        <p>Количество модулей : {{ course.total_modules }}.</p>
+        <p>Автор курса : {{ course.owner.get_full_name }}</p>
       {% endwith %}
     {% endfor %}
   </div>

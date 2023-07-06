@@ -9,6 +9,9 @@ from .forms import CourseEnrollForm
 from django.views.generic.list import ListView
 from courses.models import Course
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from courses.models import Course
+
 
 class StudentCourseDetailView(DetailView):
     model = Course

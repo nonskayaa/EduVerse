@@ -3,20 +3,24 @@
 {% block title %}My courses{% endblock %}
 
 {% block content %}
-  <h1>My courses</h1>
+  <h1>Мои курсы</h1>
   <div class="module">
     {% for course in object_list %}
       <div class="course-info">
         <h3>{{ course.title }}</h3>
         <p><a href='{% url "student_course_detail" course.id %}'>
-        Access contents</a></p>
+        Просмотреть курс</a></p>
+
       </div>
     {% empty %}
       <p>
-        You are not enrolled in any courses yet.
-        <a href='{% url "course_list" %}'>Browse courses</a>
-        to enroll on a course.
+        Вы пока не записаны ни на один курс.
+        <a href='{% url "course_list" %}'>Запишитесь</a>
+        на курс чтобы просмотреть все ваши курсы.
       </p>
     {% endfor %}
+    <h1>
+        <a href='{% url "course:manage_course_list" %}'>Мастерская</a>
+    </h1>
   </div>
 {% endblock %}

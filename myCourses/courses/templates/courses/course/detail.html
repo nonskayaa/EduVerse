@@ -10,12 +10,14 @@
       {{ object.title }}
     </h1>
     <div class="module">
-      <h2>Overview</h2>
+      <h2>Краткое описание</h2>
       <p>
         <a href='{% url "course:course_list_subject" subject.slug %}'>
-        {{ subject.title }}</a>.
-        {{ object.modules.count }} modules.
-        Instructor: {{ object.owner.get_full_name }}
+        {{ subject.title }}
+        </a>
+        </br>
+        Количество модулей : {{ object.modules.count }}</br>
+        Автор курса : {{ object.owner.get_full_name }}
       </p>
       {{ object.overview|linebreaks }}
       {% if request.user.is_authenticated %}
@@ -23,7 +25,7 @@
         <form action='{% url "student_enroll_course" %}' method="post">
         {{ enroll_form }}
         {% csrf_token %}
-        <input type="submit" value="Записаться">
+        <input type="submit" value="Пройти">
         </form>
       {% else %}
       <a href='{% url "student_registration" %}' class="button">
