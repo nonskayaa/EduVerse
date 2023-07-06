@@ -1,21 +1,34 @@
 {% extends "base.html" %}
 
 {% block title %}Log-in{% endblock %}
-
 {% block content %}
-  <h1>Вход</h1>
-  <div class="module">
-    {% if form.errors %}
-      <p>Никнейм или пароль неправильный. Пожалуйста попробуйте еще раз :)</p>
-    {% else %}
-    {% endif %}
-    <div class="login-form">
-      <form action="{% url 'login' %}" method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}" />
-        <p><input type="submit" value="Войти"></p>
-      </form>
-    </div>
-  </div>
+
+<div class="header_popup_links">
+                      <a class="autoriz_popup_link" style="color: rgba(0, 0, 0, 0.90);" href="">Авторизация</a>
+                      <a class="registr_popup_link"  href="../../students/register/"  >Регистрация</a>
+                      </div>
+    <div style="
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+"
+ class="auth_block">
+<div class="module">
+{% if form.errors %}
+  <p>Почта или пароль были введены неверно</p>
+{% else %}
+{% endif %}
+<div class="login-form">
+  <form action="{% url 'login' %}" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    <p><input type="submit"  value="Авторизоваться"></p>
+  </form>
+
+</div>
+</div>
+</div>
+
 {% endblock %}

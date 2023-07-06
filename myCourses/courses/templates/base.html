@@ -13,9 +13,9 @@
          <a href="/" class="logo">EduVerse</a>
           <div class="menu">
             {% if request.user.is_authenticated %}
-            <button class="pop_up"><a class="autoriz" href="/students/courses"><img style="vertical-align: middle;" src="../../static/img/ЛКиконка.svg"><nobr class="autoriz_link">Личный кабинет</nobr></a></button>
+            <button class="pop_up"><a class="autoriz" href="/course/mine"><img style="vertical-align: middle;" src="../../static/img/ЛКиконка.svg"><nobr class="autoriz_link">Личный кабинет</nobr></a></button>
             {% else %}
-            <button class="pop_up"><a class="autoriz" href="#Autorization"><img style="vertical-align: middle;" src="../../static/img/ЛКиконка.svg"><nobr class="autoriz_link">Вход/Регистрация</nobr></a></button>
+            <button class="pop_up"><a class="autoriz" href="/accounts/login/"><img style="vertical-align: middle;" src="../../static/img/ЛКиконка.svg"><nobr class="autoriz_link">Вход/Регистрация</nobr></a></button>
             {% endif %}
           </div>
         </div>
@@ -42,53 +42,8 @@
       </div>
 
 
-       <div class="main_popup_div" id="Autorization">
-           <a href="#" class="popup_area"></a>
-          <div class="popup_body">
-              <div class="popup_content">
-                  <div class="header_popup_links">
-                      <a class="autoriz_popup_link" href="#Autorization" style="color: rgba(0, 0, 0, 0.90);">Авторизация</a>
-                      <a class="registr_popup_link"  href="#Registration">Регистрация</a>
-                  </div>
-                  <div class="module">
-                    {% if form.errors %}
-                      <p>Почта или пароль были введены неверно</p>
-                    {% else %}
-                    {% endif %}
-                    <div class="login-form">
-                      <form action="{% url 'login' %}" method="post">
-                        {{ form.as_p }}
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ next }}" />
-                        <p><input type="submit"  value="Авторизоваться"></p>
-                      </form>
-              </div>
-          </div>
-        </div>
-       </div>
-       </div>
 
 
-       <div class="main_popup_div" id="Registration">
-            <a href="#" class="popup_area"></a>
-            <div class="popup_body">
-                <div class="popup_content">
-                  <div class="header_popup_links">
-                      <a class="autoriz_popup_link" href="#Autorization">Авторизация</a>
-                      <a class="registr_popup_link"  href="#Registration"  style="color: rgba(0, 0, 0, 0.90);">Регистрация</a>
-                      </div>
-                      <div class="module">
-                            <p>Enter your details to create an account:</p>
-                            <form method="post">
-                              {{ form.as_p }}
-                              {% csrf_token %}
-                              <p><input type="submit" value="Зарегистрироваться"></p>
-                            </form>
-                      </div>
-
-                </div>
-            </div>
-       </div>
 
 
 
