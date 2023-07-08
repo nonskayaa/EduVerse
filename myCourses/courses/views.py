@@ -43,13 +43,18 @@ class CourseListView(TemplateResponseMixin, View):
 
     def get(self, request, subject=None):
         subjects = Subject.objects.annotate(
-                        total_courses=Count('courses'))
+            total_courses=Count('courses'))
         courses = Course.objects.annotate(
-                        total_modules=Count('modules'))
+            total_modules=Count('modules'))
+
+        search_query = request.GET.get('search')
 
         if subject:
             subject = get_object_or_404(Subject, slug=subject)
             courses = courses.filter(subject=subject)
+
+        if search_query:
+            courses = courses.filter(title__icontains=search_query)
 
         return self.render_to_response({'subjects': subjects,
                                         'subject': subject,

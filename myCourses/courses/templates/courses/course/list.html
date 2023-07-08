@@ -11,7 +11,7 @@
 {% block content %}
 
 <div class="search_div">
-<form class="search_form" method="GET">
+<form class="search_form" action='{% url "course_list"%}' method="GET">
     <div
     style="
     display: flex;
@@ -21,7 +21,7 @@
         <img src="../../../static/img/circum_search.svg">
 
 
-    <input style="font-size: 16px;" class="search_input_field" type="search" placeholder="Введите название курса" name="searh" style="width:165px;">
+    <input style="font-size: 16px;" class="search_input_field" type="search" placeholder="Введите название курса" name="search" style="width:165px;">
     </div>
     <div class="dropdown">
     <button style="
