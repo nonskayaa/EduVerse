@@ -3,24 +3,38 @@
 {% block title %}My courses{% endblock %}
 
 {% block content %}
-  <h1>Мои курсы</h1>
-  <div class="module">
+<div class="main_courses_div">
+  <h2 style="color: rgba(0,0,0,0.8);">Мои курсы</h2>
+<div class="all_courses">
     {% for course in object_list %}
+  <div class="course">
       <div class="course-info">
-        <h3>{{ course.title }}</h3>
-        <p><a href='{% url "student_course_detail" course.id %}'>
-        Просмотреть курс</a></p>
-
+        <a style="margin-bottom: 15px;"class="course_card_title" href='{% url "student_course_detail" course.id %}'>{{ course.title }}</a>
+         <p class="course_text">
+          Предмет: {{ course.subject }}
+        </p>
+        <p class="course_text">Автор курса : {{ course.owner.get_full_name }}</p>
       </div>
+    </div>
+
     {% empty %}
-      <p>
-        Вы пока не записаны ни на один курс.
-        <a href='{% url "course_list" %}'>Запишитесь</a>
-        на курс чтобы просмотреть все ваши курсы.
+      <p style="font-size: 18px; color: rgba(0,0,0,0.6)">
+        Вы пока не записаны ни на один курс<br><br>
+        Перейти
+        <a href='{% url "course_list" %}' style="color: #28B0DB">каталог</a>
+        курсов
       </p>
+
     {% endfor %}
-    <h1>
-        <a href='{% url "course:manage_course_list" %}'>Мастерская</a>
-    </h1>
-  </div>
+
+
+</div>
+</div>
+<div class="main_courses_div" style="margin-bottom: 50px;">
+    <h2 style="color: rgba(0,0,0,0.8);">
+        Перейти в <a style="color: #28B0DB;" href='{% url "course:manage_course_list" %}'>мастерскую</a>
+    </h2>
+</div>
+
+
 {% endblock %}

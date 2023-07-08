@@ -13,9 +13,9 @@
          <a href="/" class="logo">EduVerse</a>
           <div class="menu">
             {% if request.user.is_authenticated %}
-            <button class="pop_up"><a class="autoriz" href="/students/courses"><img style="vertical-align: middle;" src="../../static/img/ЛКиконка.svg"><nobr class="autoriz_link">Личный кабинет</nobr></a></button>
+            <button class="pop_up"><a class="autoriz" href="/students/courses"><nobr class="autoriz_link">Личный кабинет</nobr></a></button>
             {% else %}
-            <button class="pop_up"><a class="autoriz" href="/accounts/login/"><img style="vertical-align: middle;" src="../../static/img/ЛКиконка.svg"><nobr class="autoriz_link">Вход/Регистрация</nobr></a></button>
+            <button class="pop_up"><a class="autoriz" href="/accounts/login/"><nobr class="autoriz_link">Вход/Регистрация</nobr></a></button>
             {% endif %}
           </div>
         </div>

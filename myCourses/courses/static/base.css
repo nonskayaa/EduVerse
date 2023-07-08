@@ -348,6 +348,7 @@ ul#course-modules li:hover {
 
 html{
     height: 100%;
+    overflow-x: hidden;
 }
 
 body{
@@ -387,6 +388,7 @@ a{
  .autoriz{
     color: rgba(255,255,255,0.90);
     font-size: 18px;
+    marign-top: 3px;
  }
 #header_content{
     display: flex;
@@ -421,10 +423,6 @@ a{
 
 .popup_link{
     color: rgba(255, 255, 255, 0.80);
-}
-
-#content{
-
 }
 
 #footer{
@@ -541,6 +539,278 @@ left,center,.right{
     font-size: 18px;
     font-weight: 500;
 }
+
+
+
+
+.main_courses_div{
+    margin-top: 50px;
+    margin-left: 75px;
+}
+
+.all_courses{
+    flex: 2 1 auto;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    display:flex;
+    max-width: 100%;
+    margin-bottom: 60px;
+}
+
+.course{
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 4px 5px 16px 0px rgba(0, 0, 0, 0.12);
+    padding: 25px;
+    display: block;
+    margin: 30px;
+    width: 350px;
+}
+
+.course_text{
+    color: rgba(0, 0, 0, 0.60);
+    font-family: Gilroy;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.course_card_link{
+    color: #28B0DB;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.course_card_title{
+    color: rgba(0, 0, 0, 0.80);
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.search_div{
+    margin-right: 75px;
+    margin-left: 75px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15%;
+    padding-right: 15%;
+    margin-top: 60px;
+    border-radius: 15px;
+    border: 2px solid #FFF;
+    background: var(--inner-search, linear-gradient(53deg, #F5FCFF 0%, rgba(242, 249, 252, 0.00) 100%, #F2F9FC 100%));
+    box-shadow: -4px 6px 20px 0px rgba(38, 42, 44, 0.10) inset;
+    height: 110px;
+}
+
+.standart_btn{
+    border: 0;
+    border-radius: 17px;
+background: #28B0DB;
+height: 62px;
+box-shadow: 4px 5px 12px 0px rgba(0, 0, 0, 0.15);
+color: rgba(255, 255, 255, 0.90);
+font-family: Gilroy;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+display: inline-flex;
+padding: 17px 50px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+transition: all 0.3s ease 0s;
+}
+
+.standart_btn:hover{
+    background: #6ED3F3;
+
+}
+
+.standart_btn:active{
+    background:#1580A1;
+}
+
+.search_form{
+        display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.search_input_field{
+    border: 0;
+}
+
+.search_input_field:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+
+.dropbtn {
+  background-color: rgba(0,0,0,0);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  transition: all 0.3s ease 0s;
+}
+
+/* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.dropdown {
+  position: relative;
+  display: inline-block;
+    transition: all 0.3s ease 0s;
+}
+
+/* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+  border-radius: 15px;
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  transition: all 0.3s ease 0s;
+}
+
+/* Ссылки внутри выпадающего списка */
+.dropdown-content a {
+  color: rgba(0,0,0,0.8);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+
+}
+
+/* Изменение цвета выпадающих ссылок при наведении курсора */
+.dropdown-content a:hover {background-color: rgba(250,250,250);}
+
+/* Показать выпадающее меню при наведении курсора */
+.dropdown:hover .dropdown-content
+ {
+ display: block;
+ }
+
+ li{
+  list-style-type: none;
+ }
+
+.subheader{
+    box-sizing: border-box;
+    position: absolute;
+    margin-top: 75px;
+    padding-top: 50px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    background: rgba(0,42,65,1);
+    border-radius: 0px 0px 20px 20px;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.25);
+    padding-left: 75px;
+    padding-bottom: 30px;
+ }
+
+ .subheader h1{
+    color: #fff;
+    font-family: Gilroy;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+ }
+
+
+ .course_info{
+    box-sizing: border-box;
+    margin-top: 340px;
+    margin-left: 75px;
+    padding-right: 75px;
+ }
+
+.subheader_content{
+    box-sizing: border-box;
+    z-index: 1;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.80);
+font-family: Gilroy;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+
+.autorization_form input[type="text"], input[type="password"]{
+    border-radius: 17px;
+    background: #F2F9FC;
+    border: 0;
+    height: 30px;
+    color: rgba(0, 0, 0, 0.40);
+    font-family: Gilroy;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 5px;
+}
+
+.autorization_form label{
+}
+
+.helptext{
+    display: none;
+}
+
+.side_bar_module{
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.3);
+    width: 405px;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    background: #002A41;
+    height: 100vh;
+    position: fixed;
+}
+
+.side_bar_module_content{
+    box-sizing: border-box;
+    width: 355px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    color: #fff;
+    height: 100vh;
+    margin-top:110px;
+    margin-left: 50px;
+}
+
+.module_content{
+    margin-left: 500px;
+    margin-top: 0px;
+}
+
+.lessons{
+     list-style-image: url(../../../img/lesson_marker.svg.svg);
+}
+
+.autorization_form p{
+}
+
 
 
 

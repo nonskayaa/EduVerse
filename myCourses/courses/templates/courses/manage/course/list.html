@@ -2,10 +2,18 @@
 
 {% block title %}My courses{% endblock %}
 
+
+
+<!--МАСТЕРСКАЯ-->
+
+
+
 {% block content %}
-  <h1>Мои курсы</h1>
-  <div class="module">
+<div class="main_courses_div">
+  <h2 style="color: rgba(0,0,0,0.8);">Мои курсы</h2>
+<div class="all_courses">
     {% for course in object_list %}
+      <div class="course">
       <div class="course-info">
         <h3>{{ course.title }}</h3>
          <p>
@@ -14,15 +22,29 @@
            <a href='{% url "course:course_module_update" course.id %}'>Добавить модули</a>
            {% if course.modules.count > 0 %}
             <a href='{% url "course:module_content_list" course.modules.first.id %}'>Добавить контент</a>
+
 {% endif %}
          </p>
       </div>
+      </div>
     {% empty %}
-      <p>У вас пока нет никаких курсов.</p>
+      <p>Вы не создали ни одного курса</p>
+
     {% endfor %}
-    <p>
-      <a href='{% url "course:course_create" %}' class="button">Создать новый курс</a>
-    </p>
-  </div>
+
+
+
+
+     <button style="margin-top: 20px;" class="standart_btn"> <a style="
+    color: rgba(255, 255, 255, 0.90);
+font-family: Gilroy;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+" href='{% url "course:course_create" %}' class="button">Создать новый курс</a></button>
+    </div>
+</div>
 
 {% endblock %}

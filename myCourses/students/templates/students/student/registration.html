@@ -20,10 +20,10 @@
  class="auth_block">
   <div class="module">
     <p>Enter your details to create an account:</p>
-    <form method="post">
+    <form class="autorization_form" method="post">
       {{ form.as_p }}
       {% csrf_token %}
-      <p><input type="submit" value="Create my account"></p>
+      <p><input class="standart_btn" type="submit" style="margin-left:95px; margin-top: 45px;margin-bottom: 60px;" value="Зарегистрироваться"></p>
     </form>
   </div>
   </div>

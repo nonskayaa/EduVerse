@@ -5,33 +5,56 @@
 {% endblock %}
 
 {% block content %}
+<div class="subheader">
+
   {% with subject=object.subject %}
     <h1>
       {{ object.title }}
     </h1>
-    <div class="module">
-      <h2>Краткое описание</h2>
+     <div class="subheader_content">
       <p>
-        <a href='{% url "course:course_list_subject" subject.slug %}'>
-        {{ subject.title }}
-        </a>
+        Предмет: {{ subject.title }}
+
         </br>
         Количество модулей : {{ object.modules.count }}</br>
         Автор курса : {{ object.owner.get_full_name }}
       </p>
+      </div>
+  </div>
+<div class="course_info">
+    <p style="
+  color: rgba(0, 0, 0, 0.80);
+font-family: Gilroy;
+font-size: 40px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+">Описание курса</p>
+  <p style="
+  color: rgba(0, 0, 0, 0.60);
+font-family: Gilroy;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+">
       {{ object.overview|linebreaks }}
+  </p>
       {% if request.user.is_authenticated %}
 <!--      Кнопка на запись на курс-->
         <form action='{% url "student_enroll_course" %}' method="post">
         {{ enroll_form }}
         {% csrf_token %}
-        <input type="submit" value="Пройти">
+          <input style="margin-bottom: 100px; margin-top: 60px;" class="standart_btn" type="submit" value="Пройти"></button>
         </form>
       {% else %}
-      <a href='{% url "student_registration" %}' class="button">
-        Зарегистрироваться
+      <a class="standart_btn" style="margin-bottom: 100px; margin-top: 60px; height: 45px;"  href='{% url "login" %}' class="button">
+        Войти
       </a>
       {% endif %}
-    </div>
+
+
   {% endwith %}
+    </div>
+
 {% endblock %}

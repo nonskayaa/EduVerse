@@ -9,48 +9,94 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
-    {% if subject %}
-      {{ subject.title }} courses
-    {% else %}
-      Все курсы
-    {% endif %}
-  </h1>
-  <div class="contents">
-    <h3>Предметы</h3>
+
+<div class="search_div">
+<form class="search_form" method="GET">
+    <div
+    style="
+    display: flex;
+    flex-wrap: inherit;
+    --bs-gutter-y: 0;
+">
+        <img src="../../../static/img/circum_search.svg">
+
+
+    <input style="font-size: 16px;" class="search_input_field" type="search" placeholder="Введите название курса" name="searh" style="width:165px;">
+    </div>
+    <div class="dropdown">
+    <button style="
+    color: rgba(0,0,0,0.8);
+     margin-left: 35px;
+     margin-right: 35px;
+    display: flex;
+    font-size: 18px;
+    flex-wrap: inherit;
+    --bs-gutter-y: 0;
+"
+
+        class="dropbtn">Предметы<img style="margin-top:7px; margin-left: 3px;" src="../../../static/img/Polygon.svg"></button>
+
+  <div class="dropdown-content">
     <ul id="modules">
       <li {% if not subject %}class="selected"{% endif %}>
-        <h3>
+        <p>
         <a href='{% url "course_list" %}'>Все предметы</a>
-        </h3>
+        </p>
       </li>
       {% for s in subjects %}
         <li {% if subject == s %}class="selected"{% endif %}>
-          <h3>
+          <p>
           <a href='{% url "course:course_list_subject" s.slug %}'>
             {{ s.title }}
-            </h3>
+
           </a>
+              </p>
         </li>
-      <span> Количество курсов : {{ s.total_courses }} </span>
       {% endfor %}
     </ul>
   </div>
-  <div class="module">
+</div>
+    <button  class="standart_btn" type="submit">Найти</button>
+</form>
+    </div>
+
+
+
+
+    <div class="main_courses_div">
+        <h2 style="color: rgba(0,0,0,0.8);">
+            {% if subject %}
+             Курсы по предемету:  {{ subject.title }}
+            {% else %}
+              Курсы
+            {% endif %}
+        </h2>
+
+  <div class="all_courses">
     {% for course in courses %}
       {% with subject=course.subject %}
+
+    <div class="course">
         <h3>
-          <a href='{% url "course:course_detail" course.slug %}'>
+          <a style="margin-bottom: 15px;"class="course_card_title" href='{% url "course:course_detail" course.slug %}'>
             {{ course.title }}
           </a>
         </h3>
-        <p>
-          ПРЕДМЕТ:
-          <a href='{% url "course:course_list_subject" subject.slug %}'>{{ subject }}</a>.
+        <p class="course_text">
+          Предмет:
+          <a class="course_card_link" href='{% url "course:course_list_subject" subject.slug %}'>{{ subject }}</a>
         </p>
-        <p>Количество модулей : {{ course.total_modules }}.</p>
-        <p>Автор курса : {{ course.owner.get_full_name }}</p>
+        <p class="course_text">Количество модулей : {{ course.total_modules }}</p>
+        <p class="course_text">Автор курса : {{ course.owner.get_full_name }}</p>
+    </div>
+
       {% endwith %}
+
     {% endfor %}
+
   </div>
+    </div>
+
+
+
 {% endblock %}

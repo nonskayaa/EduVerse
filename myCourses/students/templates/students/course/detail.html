@@ -5,20 +5,30 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
-    {{ module.title }}
-  </h1>
+<div class="side_bar_module"></div>
+  <div class="side_bar_module_content">
+  <p style="font-size: 40px;">
+    {{ object.title }}
+
+  </p>
   <div class="contents">
-    <h3>Modules</h3>
+    <p
+    style="color: rgba(255, 255, 255, 0.80);
+font-family: Gilroy;
+font-size: 32px;"
+    >Уроки</p>
     <ul id="modules">
       {% for m in object.modules.all %}
-        <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
-          <a href='{% url "student_course_detail_module" object.id m.id %}'>
+        <li class="lessons" data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
+          <a style="color: rgba(255, 255, 255, 0.60); font-size: 20px;"
+                  href='{% url "student_course_detail_module" object.id m.id %}'>
+            <!--
             <span>
               Module <span class="order">{{ m.order|add:1 }}</span>
-            </span>
+            </span>-->
             <br>
             {{ m.title }}
+                        <br>
           </a>
         </li>
       {% empty %}
@@ -26,7 +36,20 @@
       {% endfor %}
     </ul>
   </div>
+</div>
+  </div>
+<div class="module_content">
   <div class="module">
+    <p style="
+  color: rgba(0, 0, 0, 0.80);
+font-family: Gilroy;
+font-size: 40px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+">
+    {{ module.title }}
+    </p>
       {% for content in module.contents.all %}
         {% with item=content.item %}
           <h2>{{ item.title }}</h2>
@@ -34,4 +57,5 @@
         {% endwith %}
       {% endfor %}
   </div>
+ </div>
 {% endblock %}

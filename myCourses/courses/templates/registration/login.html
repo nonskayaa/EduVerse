@@ -20,11 +20,11 @@
 {% else %}
 {% endif %}
 <div class="login-form">
-  <form action="{% url 'login' %}" method="post">
+  <form class="autorization_form" action="{% url 'login' %}" method="post">
     {{ form.as_p }}
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}" />
-    <p><input type="submit"  value="Авторизоваться"></p>
+    <input class="standart_btn" type="submit" style="margin-top: 45px;" value="Авторизоваться"></p>
   </form>
 
 </div>
@@ -32,3 +32,5 @@
 </div>
 
 {% endblock %}
+
+
