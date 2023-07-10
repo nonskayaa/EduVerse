@@ -18,10 +18,10 @@ font-size: 32px;">Модули</p>
       {% for m in course.modules.all %}
         <li class="lessons" data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
           <a style="color: rgba(255, 255, 255, 0.60); font-size: 20px;" href='{% url "course:module_content_list" m.id %}'>
-            <span>
+            <!--<span>
               Модуль <span class="order">{{ m.order|add:1 }}</span>
-            </span>
-            <br><br>
+            </span>-->
+            <br>
             {{ m.title }}
           </a>
         </li>
@@ -29,7 +29,7 @@ font-size: 32px;">Модули</p>
         <li>Ни одного модуля не создано</li>
       {% endfor %}
     </ul>
-    <p><a style="color: rgba(255,255,255,0.9); font-size: 20px;" href='{% url "course:course_module_update" course.id %}'>
+    <p style="margin-top: 45px;"><a style="color: rgba(255,255,255,0.9); font-size: 20px; " href='{% url "course:course_module_update" course.id %}'>
     Редактировать модули</a></p>
   </div>
   </div>
