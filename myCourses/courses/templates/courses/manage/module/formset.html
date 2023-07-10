@@ -5,15 +5,21 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Редактировать модули "{{ course.title }}"</h1>
+<div class="standart_div">
+  <p class="h1">Редактировать модули "{{ course.title }}"</p>
   <div class="module">
-    <h2>Модули курса</h2>
+    <p class="h2" style="font-size: 24px;">Модули курса</p>
     <form method="post">
       {{ formset }}
       {{ formset.management_form }}
       {% csrf_token %}
-      <input type="submit" value="Сохранить изменения">
+      <input style="margin-top: 30px; margin-bottom: 60px;" class="standart_btn" type="submit" value="Сохранить изменения">
+       {% if course.modules.count > 0 %}
+            <a style="height: 28px; margin-top: 30px; margin-bottom: 60px;" class="standart_btn" href='{% url "course:module_content_list" course.modules.first.id %}'>Добавить контент</a>
+      {% endif %}
     </form>
+
+  </div>
   </div>
 
 {% endblock %}

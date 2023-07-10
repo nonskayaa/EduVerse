@@ -812,6 +812,60 @@ line-height: normal;
 }
 
 
+.func_ref{
+    color: rgba(0, 0, 0, 0.60);
+font-family: Gilroy;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+display:inline-block;
+ display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.courses_block{
+    display: flex;
+   justify-content: space-between;
+}
+
+.standart_div{
+    padding-left: 85px;
+}
+
+.h1{
+   color: rgba(0,0,0,0.8);
+   font-size: 40px;
+}
+
+.standart_text{
+    color: rgba(0,0,0,0.6);
+}
+
+.h2{
+    color: rgba(0,0,0,0.7);
+}
+
+.content-types{
+    display: flex;
+    margin-bottom: 60px;
+    justify-content: space-between;
+    padding-right: 75px;
+}
+
+
+
+
 
 
 

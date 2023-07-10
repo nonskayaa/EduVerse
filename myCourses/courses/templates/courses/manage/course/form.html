@@ -9,19 +9,21 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
+<div class="standart_div">
+  <p class="h1">
     {% if object %}
       Редактировать курс "{{ object.title }}"
     {% else %}
       Создать новый курс
     {% endif %}
-  </h1>
+  </p>
   <div class="module">
-    <h2>Информация о курсе</h2>
+    <p class="h2" style="font-size: 24px;">Информация о курсе</p>
     <form method="post">
       {{ form.as_p }}
       {% csrf_token %}
-      <p><input type="submit" value="Создать курс"></p>
+      <p><input style="margin-top: 30px;margin-bottom: 60px;" class="standart_btn" type="submit" value="Сохранить"></p>
     </form>
   </div>
+</div>
 {% endblock %}
