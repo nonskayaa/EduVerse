@@ -56,9 +56,9 @@
       </div>
     {% empty %}
       <p>Вы не создали ни одного курса</p>
+    {% endfor %} </div>
 
-    {% endfor %}
-     <button style="margin-top: 30px;" class="standart_btn"> <a style="
+     <button style="margin-top: 30px;margin-bottom: 60px;" class="standart_btn"> <a style="
     color: rgba(255, 255, 255, 0.90);
 font-family: Gilroy;
 font-size: 24px;
@@ -67,7 +67,7 @@ font-weight: 500;
 line-height: normal;
 
 " href='{% url "course:course_create" %}' class="button">Создать новый курс</a></button>
-    </div>
+
 </div>
 
 {% endblock %}
