@@ -101,6 +101,7 @@ class Text(ItemBase):
 
 class File(ItemBase):
     file = models.FileField(upload_to='files')
+    content = models.TextField(blank=True)
 
 
 class Image(ItemBase):
