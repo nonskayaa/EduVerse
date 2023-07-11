@@ -13,17 +13,25 @@
   <p class="h1">
     {% if object %}
       Редактировать курс "{{ object.title }}"
-    {% else %}
-      Создать новый курс
-    {% endif %}
-  </p>
-  <div class="module">
+      <div>
     <p class="h2" style="font-size: 24px;">Информация о курсе</p>
-    <form method="post">
+    <form id="form_change" method="post">
       {{ form.as_p }}
       {% csrf_token %}
       <p><input style="margin-top: 30px;margin-bottom: 60px;" class="standart_btn" type="submit" value="Сохранить"></p>
     </form>
   </div>
+    {% else %}
+      Создать новый курс
+        <div>
+    <p class="h2" style="font-size: 24px;">Информация о курсе</p>
+    <form id="form_create" method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <p><input style="margin-top: 30px;margin-bottom: 60px;" class="standart_btn" type="submit" value="Сохранить"></p>
+    </form>
+  </div>
+    {% endif %}
+  </p>
 </div>
 {% endblock %}
