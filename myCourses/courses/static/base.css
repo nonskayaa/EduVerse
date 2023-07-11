@@ -670,7 +670,7 @@ transition: all 0.3s ease 0s;
 .dropdown {
   position: relative;
   display: inline-block;
-    transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 
 /* Выпадающее содержимое (скрыто по умолчанию) */
@@ -683,6 +683,9 @@ transition: all 0.3s ease 0s;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   transition: all 0.3s ease 0s;
+  overflow-y:auto;
+  overflow-x:hidden;
+  height:300px;
 }
 
 /* Ссылки внутри выпадающего списка */
@@ -861,6 +864,18 @@ display:inline-block;
     margin-bottom: 60px;
     justify-content: space-between;
     padding-right: 75px;
+}
+
+
+#form_create #id_slug, label[for="id_slug"]{
+}
+
+#form_change #id_slug{
+    display: none;
+}
+
+#form_change label[for="id_slug"]{
+    display: none;
 }
 
 
