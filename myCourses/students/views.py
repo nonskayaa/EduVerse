@@ -1,16 +1,20 @@
-from django.shortcuts import render
+from django.forms import modelform_factory
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.views.generic.base import TemplateResponseMixin, View
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.views.generic.edit import FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CourseEnrollForm
+from .forms import CourseEnrollForm, AddHomework
 from django.views.generic.list import ListView
-from courses.models import Course
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from courses.models import Course
+
+from .models import AssignmentSubmission
 
 
 class StudentCourseDetailView(DetailView):
@@ -25,13 +29,31 @@ class StudentCourseDetailView(DetailView):
         # получить объект Сourse
         course = self.get_object()
         if 'module_id' in self.kwargs:
-    # взять текущий модуль
             context['module'] = course.modules.get(
                 id=self.kwargs['module_id'])
         else:
-    # взять первый модуль
             context['module'] = course.modules.all()[0]
         return context
+
+
+# class StudentHomeworkUpload(DetailView):
+#     model = Course
+#     template_name = 'students/course/homework.html'
+
+
+def add_homework(request,pk,module_id):
+    if request.method =='POST':
+        form =AddHomework(request.POST, request.FILES)
+        if form.is_valid():
+
+            a = form.save(commit = False)
+            a.student_id = request.user.id
+            a.module_id = module_id
+            a.save()
+            return redirect('student_course_detail_module', pk, module_id)
+    else:
+        form = AddHomework()
+    return render(request,'students/course/homework.html', {'form':form})
 
 
 class StudentCourseListView(LoginRequiredMixin, ListView):
@@ -66,4 +88,5 @@ class StudentRegistrationView(CreateView):
                              password=cd['password1'])
          login(self.request, user)
          return result
+
 

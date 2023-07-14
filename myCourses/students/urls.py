@@ -1,5 +1,6 @@
 from django.urls import path
-from . import views
+from .import views
+from .views import add_homework
 
 urlpatterns = [
     path('register/',
@@ -17,4 +18,7 @@ urlpatterns = [
     path('course/<pk>/<module_id>/',
          views.StudentCourseDetailView.as_view(),
          name='student_course_detail_module'),
+    path('course/<pk>/<module_id>/add_homework',
+         views.add_homework),
+
 ]

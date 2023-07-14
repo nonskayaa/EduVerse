@@ -57,5 +57,6 @@ line-height: normal;
         {% endwith %}
       {% endfor %}
   </div>
+  <a href="{% url 'student_course_detail_module' object.id module.id  %}add_homework" class="btn btn-primary">Сдать работу</a>
  </div>
 {% endblock %}
